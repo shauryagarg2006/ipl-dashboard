@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { MatchDetailCard } from '../components/MatchDetailCard';
 import { MatchSmallCard } from '../components/MatchSmallCard';
 
-export const TeamPage = () => {
+export const MatchPage = () => {
 
     const [team, setTeam] = useState({ matches: [] });
     const { teamName } = useParams();
@@ -22,7 +22,7 @@ export const TeamPage = () => {
         return <h1>Team not Found</h1>
     }
     return (
-        <div className="TeamPage">
+        <div className="MatchPage">
             <h1>{team.teamName}</h1>
             <MatchDetailCard teamName={team.teamName} match={team.matches[0]} />
             {team.matches.slice(1).map(match => <MatchSmallCard teamName={team.teamName} key={match.id} match={match} />)}
