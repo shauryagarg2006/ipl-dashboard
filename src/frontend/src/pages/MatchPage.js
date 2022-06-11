@@ -1,32 +1,33 @@
 import { React, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MatchDetailCard } from '../components/MatchDetailCard';
-import { MatchSmallCard } from '../components/MatchSmallCard';
 
 export const MatchPage = () => {
 
-    const [team, setTeam] = useState({ matches: [] });
-    const { teamName } = useParams();
+    const [matches, setMatches] = useState([]);
+    const { teamName, year } = useParams();
 
     useEffect(
         () => {
             const fetchMatches = async () => {
-                const response = await fetch(`http://localhost:8080/team/${teamName}`);
+                const response = await fetch(`http://localhost:8080/team/${teamName}/matches?year=${year}`);
                 const data = await response.json();
-                setTeam(data);
+                setMatches(data);
             }
             fetchMatches();
-        }, [teamName]
+        }, [teamName, year]
     );
-    if (!team || !team.teamName) {
-        return <h1>Team not Found</h1>
+    if (!matches) {
+        return <h1>Matches not Found</h1>
     }
     return (
         <div className="MatchPage">
-            <h1>{team.teamName}</h1>
-            <MatchDetailCard teamName={team.teamName} match={team.matches[0]} />
-            {team.matches.slice(1).map(match => <MatchSmallCard teamName={team.teamName} key={match.id} match={match} />)}
+            <h1>Match Page</h1>
+            {
 
+                matches.map(match => <MatchDetailCard teamName={teamName} key={match.id} match={match} />)
+
+            }
         </div>
     );
 }
