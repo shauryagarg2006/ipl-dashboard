@@ -20,13 +20,11 @@ export const MatchPage = () => {
     if (!matches) {
         return <h1>Matches not Found</h1>
     }
-    return (
+    return ( 
         <div className="MatchPage">
             <h1>Match Page</h1>
             {
-
                 matches.map(match => <MatchDetailCard teamName={teamName} key={match.id} match={match} />)
-
             }
         </div>
     );
