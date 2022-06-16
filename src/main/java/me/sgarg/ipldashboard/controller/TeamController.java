@@ -32,6 +32,11 @@ public class TeamController {
         return t;
     }
 
+    @GetMapping("/team")
+    public Iterable<Team> getTeam() {
+        return teamRepository.findAll();
+    }
+
     @GetMapping("/team/{teamName}/matches")
     public List<Match> getTeam(@PathVariable String teamName, @RequestParam int year) {
         LocalDate startDate = LocalDate.of(year, 1, 1);
