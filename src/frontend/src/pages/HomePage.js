@@ -1,5 +1,4 @@
 import { React, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { TeamTile } from '../components/TeamTile';
 import './HomePage.scss';
 export const HomePage = () => {
