@@ -60,3 +60,5 @@ hs_err_pid*
 
 ### React Frontend ####
 src/frontend/node_modules
+
+src/main/resources/public
